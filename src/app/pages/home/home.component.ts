@@ -13,6 +13,7 @@ import { Apod } from '../../interface/apod.interface';
 export class HomeComponent implements OnInit {
   apodService = inject(ApodService);
   apods: Apod[] = [];
+  isLoading = true;
 
   nasaLogo = 'https://www.nasa.gov/wp-content/themes/nasa/assets/images/nasa-logo.svg';
 
@@ -20,9 +21,11 @@ export class HomeComponent implements OnInit {
     this.apodService.getApod().subscribe({
       next: (data: Apod[]) => {
         this.apods = data;
+        this.isLoading = false;
       },
       error: (error) => {
         console.error('Error fetching APODs:', error);
+        this.isLoading = false;
       }
     });
   }
