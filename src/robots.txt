@@ -1,0 +1,14 @@
+# Allow all crawlers
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://angular-nasa-apod.vercel.app/sitemap.xml
+
+# Disallow crawling of Angular's internal routes
+Disallow: /ng/
+Disallow: /assets/
+Disallow: /icons/
+
+# Crawl-delay to prevent server overload
+Crawl-delay: 10 
