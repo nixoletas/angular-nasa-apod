@@ -1,5 +1,5 @@
 
-![Captura de tela 2025-06-16 003035](https://github.com/user-attachments/assets/b44f2990-b802-4561-b54b-b6fdae088e06)
+![image](https://github.com/user-attachments/assets/aa66b841-5f20-4d14-8fc1-68dccc6c8748)
 
 # NASA Astronomy Picture of the Day (APOD) Viewer
 
