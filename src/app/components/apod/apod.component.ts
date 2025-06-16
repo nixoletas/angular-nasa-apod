@@ -17,11 +17,14 @@ export class ApodComponent {
     url: ''
   };
 
+  isLoading = true;
+  
   constructor(private apodService: ApodService) {}
 
   ngOnInit() {
     this.apodService.getToday().subscribe((data) => {
       this.apod = data;
+      this.isLoading = false;
     });
   }
 }
