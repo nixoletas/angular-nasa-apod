@@ -2,11 +2,12 @@ import { Component, inject, OnInit } from '@angular/core';
 import { ApodService } from '../../services/apod.service';
 import { CommonModule } from '@angular/common';
 import { Apod } from '../../interface/apod.interface';
+import { ApodComponent } from '../../components/apod/apod.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, ApodComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
