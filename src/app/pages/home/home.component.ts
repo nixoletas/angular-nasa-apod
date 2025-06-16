@@ -14,6 +14,8 @@ export class HomeComponent implements OnInit {
   apodService = inject(ApodService);
   apods: Apod[] = [];
 
+  nasaLogo = 'https://www.nasa.gov/wp-content/themes/nasa/assets/images/nasa-logo.svg';
+
   ngOnInit() {
     this.apodService.getApod().subscribe({
       next: (data: Apod[]) => {

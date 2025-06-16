@@ -1,1 +1,11 @@
 @use "tailwindcss";
+
+@font-face {
+    font-family: 'Excalifont-Regular';
+    src: url('/public/fonts/Excalifont-Regular.woff2') format('woff2');
+}
+
+body {
+    background-color: wheat;
+    font-family: 'Excalifont-Regular', sans-serif;
+}
