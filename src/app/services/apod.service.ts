@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Apod } from '../interface/apod.interface';
 import { Observable } from 'rxjs';
-import { environment } from '../../environments/environment';
+import { Today } from '../interface/today.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -14,8 +14,13 @@ export class ApodService {
   ) { }
 
   apiUrl = "/api/apod";
+  todayUrl = "/api/today";
 
   getApod(): Observable<Apod[]> {
     return this.http.get<Apod[]>(this.apiUrl);
+  }
+
+  getToday(): Observable<Today> {
+    return this.http.get<Today>(this.todayUrl);
   }
 }

@@ -29,6 +29,12 @@ app.get('/api/apod', async (req, res) => {
   res.json(data);
 });
 
+app.get('/api/today', async (req, res) => {
+  const response = await fetch(`${apiUrl}&api_key=${apiKey}`);
+  const data = await response.json();
+  res.json(data);
+});
+
 app.use(
   express.static(browserDistFolder, {
     maxAge: '1y',
