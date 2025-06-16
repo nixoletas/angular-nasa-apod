@@ -3,16 +3,14 @@
 
 # NASA Astronomy Picture of the Day (APOD) Viewer
 
-A modern web application built with Angular that displays NASA's Astronomy Picture of the Day collection. This application provides a beautiful and responsive interface to explore stunning astronomical images along with their detailed explanations.
+A modern web application built with Angular that displays 10 random NASA's Astronomy Picture of the Day collection. Responsive interface to explore stunning astronomical images along with their detailed explanations.
 
 ## Features
 
-- View NASA's Astronomy Picture of the Day collection
+- View NASA's Astronomy Picture of the Day collection of 10 random images
 - Responsive design that works on all devices
-- Beautiful UI with Tailwind CSS styling
+- UI with Tailwind CSS styling
 - Detailed explanations for each astronomical image
-- Copyright information display
-- Clean and modern user interface
 
 ## Technologies Used
 
@@ -33,7 +31,7 @@ Before you begin, ensure you have the following installed:
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/angular-nasa-apod.git
+git clone https://github.com/nixoletas/angular-nasa-apod.git
 cd angular-nasa-apod
 ```
 
@@ -76,9 +74,9 @@ ng test
 src/
 ├── app/
 │   ├── pages/
-│   │   └── home/         # Main page component
-│   ├── services/         # API services
-│   └── models/           # TypeScript interfaces
+│   │   └── home/        # Main page component
+│   ├── services/        # API services
+│   └── interface/       # TypeScript interfaces
 ├── assets/              # Static assets
 └── environments/        # Environment configurations
 ```
