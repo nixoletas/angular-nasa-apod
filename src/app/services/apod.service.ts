@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Apod } from '../interface/apod.interface';
 import { Observable } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -12,14 +13,9 @@ export class ApodService {
     private http: HttpClient,
   ) { }
 
-  apiKey = 'SVqYcjbj5bcwdhqN4F791dVpUa8GFucO7W6AwAbQ';
-  apiUrl = 'https://api.nasa.gov/planetary/apod?';
-  apiParams = {
-    api_key: this.apiKey,
-    count: 10
-  };
+  apiUrl = "/api/apod";
 
   getApod(): Observable<Apod[]> {
-    return this.http.get<Apod[]>(`${this.apiUrl}api_key=${this.apiKey}&count=${this.apiParams.count}`);
+    return this.http.get<Apod[]>(this.apiUrl);
   }
 }
