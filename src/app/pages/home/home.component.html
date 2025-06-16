@@ -12,14 +12,12 @@
   @for (apod of apods; track apod.date) {
     <div class="w-full">
       <h2 class="text-lg font-bold text-center py-2">{{ apod.title }}</h2>
-      <div class="bg-black my-2">
+      <div class="bg-black my-2 relative">
         <img [src]="apod.url" [alt]="apod.title">
+        <p class="text-sm text-white absolute bottom-2 right-2">{{apod.copyright}}</p>
       </div>
-      <p class="date text-lg text-center py-2">{{ apod.date }}</p>
+      <p class="date text-lg font-semibold text-center py-2">{{ apod.date }}</p>
       <p class="explanation text-md text-justify py-2">{{ apod.explanation }}</p>
-      @if (apod.copyright) {
-        <p class="copyright">© {{ apod.copyright }}</p>
-      }
     </div>
   }
 </div>
