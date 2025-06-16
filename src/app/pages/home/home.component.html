@@ -1,0 +1,15 @@
+<h1>NASA Astronomy Picture of the Day</h1>
+
+<div class="apod-grid">
+  @for (apod of apods; track apod.date) {
+    <div class="apod-card">
+      <h2>{{ apod.title }}</h2>
+      <img [src]="apod.url" [alt]="apod.title">
+      <p class="date">{{ apod.date }}</p>
+      <p class="explanation">{{ apod.explanation }}</p>
+      @if (apod.copyright) {
+        <p class="copyright">© {{ apod.copyright }}</p>
+      }
+    </div>
+  }
+</div>
