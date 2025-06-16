@@ -9,6 +9,10 @@ import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { getContext } from '@netlify/angular-runtime/context.mjs';
 import { AngularAppEngine } from '@angular/ssr';
+import { environment } from './environments/environment';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const serverDistFolder = dirname(fileURLToPath(import.meta.url));
 const browserDistFolder = resolve(serverDistFolder, '../browser');
@@ -23,21 +27,15 @@ export async function netlifyAppEngineHandler(request: Request): Promise<Respons
   return result || new Response('Not found', { status: 404 })
 }
 
-/**
- * Example Express Rest API endpoints can be defined here.
- * Uncomment and define endpoints as necessary.
- *
- * Example:
- * ```ts
- * app.get('/api/**', (req, res) => {
- *   // Handle API request
- * });
- * ```
- */
+const apiUrl = environment.API_URL;
+const apiKey = process.env['API_KEY'];
 
-/**
- * Serve static files from /browser
- */
+app.get('/api/apod', async (req, res) => {
+  const response = await fetch(`${apiUrl}&api_key=${apiKey}&count=10`);
+  const data = await response.json();
+  res.json(data);
+});
+
 app.use(
   express.static(browserDistFolder, {
     maxAge: '1y',
