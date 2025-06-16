@@ -7,7 +7,6 @@ import {
 import express from 'express';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { getContext } from '@netlify/angular-runtime/context.mjs';
 import { AngularAppEngine } from '@angular/ssr';
 import { environment } from './environments/environment';
 import dotenv from 'dotenv';
@@ -20,12 +19,6 @@ const browserDistFolder = resolve(serverDistFolder, '../browser');
 const app = express();
 const angularApp = new AngularNodeAppEngine();
 const angularAppEngine = new AngularAppEngine();
-
-export async function netlifyAppEngineHandler(request: Request): Promise<Response> {
-  const context = getContext()
-  const result = await angularAppEngine.handle(request, context)
-  return result || new Response('Not found', { status: 404 })
-}
 
 const apiUrl = environment.API_URL;
 const apiKey = process.env['API_KEY'];
