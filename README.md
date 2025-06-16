@@ -1,3 +1,6 @@
+
+![Captura de tela 2025-06-16 003035](https://github.com/user-attachments/assets/b44f2990-b802-4561-b54b-b6fdae088e06)
+
 # NASA Astronomy Picture of the Day (APOD) Viewer
 
 A modern web application built with Angular that displays NASA's Astronomy Picture of the Day collection. This application provides a beautiful and responsive interface to explore stunning astronomical images along with their detailed explanations.
