@@ -1,12 +1,3 @@
-.apod-grid {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
-
-    .apod-card {
-        width: 100%;
-        max-width: 400px;
-    }
+p {
+    font-family: 'Fira Code', monospace;
 }
