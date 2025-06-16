@@ -1,59 +1,99 @@
-# AngularNasaApod
+# NASA Astronomy Picture of the Day (APOD) Viewer
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.11.
+A modern web application built with Angular that displays NASA's Astronomy Picture of the Day collection. This application provides a beautiful and responsive interface to explore stunning astronomical images along with their detailed explanations.
 
-## Development server
+## Features
 
-To start a local development server, run:
+- View NASA's Astronomy Picture of the Day collection
+- Responsive design that works on all devices
+- Beautiful UI with Tailwind CSS styling
+- Detailed explanations for each astronomical image
+- Copyright information display
+- Clean and modern user interface
+
+## Technologies Used
+
+- Angular 19
+- TypeScript
+- Tailwind CSS
+- RxJS
+- Node.js
+
+## Prerequisites
+
+Before you begin, ensure you have the following installed:
+- Node.js (Latest LTS version recommended)
+- npm (comes with Node.js)
+- Angular CLI (`npm install -g @angular/cli`)
+
+## Installation
+
+1. Clone the repository:
+```bash
+git clone https://github.com/yourusername/angular-nasa-apod.git
+cd angular-nasa-apod
+```
+
+2. Install dependencies:
+```bash
+npm install
+```
+
+## Development
+
+To start the development server:
 
 ```bash
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Navigate to `http://localhost:4200/` in your browser. The application will automatically reload if you change any of the source files.
 
-## Code scaffolding
+## Building for Production
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
+To build the project for production:
 
 ```bash
 ng build
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+The build artifacts will be stored in the `dist/` directory.
 
-## Running unit tests
+## Running Tests
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+To execute the unit tests:
 
 ```bash
 ng test
 ```
 
-## Running end-to-end tests
+## Project Structure
 
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
+```
+src/
+├── app/
+│   ├── pages/
+│   │   └── home/         # Main page component
+│   ├── services/         # API services
+│   └── models/           # TypeScript interfaces
+├── assets/              # Static assets
+└── environments/        # Environment configurations
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+## Contributing
 
-## Additional Resources
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## Acknowledgments
+
+- NASA for providing the APOD API
+- Angular team for the amazing framework
+- Tailwind CSS for the utility-first CSS framework
