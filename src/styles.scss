@@ -5,9 +5,13 @@
 @font-face {
     font-family: 'Excalifont-Regular';
     src: url('/public/fonts/Excalifont-Regular.woff2') format('woff2');
+    font-display: swap;
 }
 
 body {
     background-color: wheat;
     font-family: 'Excalifont-Regular', sans-serif;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
 }
