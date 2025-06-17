@@ -23,18 +23,52 @@ const angularAppEngine = new AngularAppEngine();
 const apiUrl = environment.API_URL;
 const apiKey = process.env['API_KEY'];
 
+// API Routes with proper caching
 app.get('/api/apod', async (req, res) => {
-  const response = await fetch(`${apiUrl}&api_key=${apiKey}&count=10`);
-  const data = await response.json();
-  res.json(data);
+  try {
+    // Set cache headers BEFORE making the API call
+    res.set({
+      'Cache-Control': 'public, max-age=10800', // 3 hours
+      'Content-Type': 'application/json'
+    });
+
+    const response = await fetch(`${apiUrl}&api_key=${apiKey}&count=10`);
+    
+    if (!response.ok) {
+      throw new Error(`NASA API error: ${response.status}`);
+    }
+    
+    const data = await response.json();
+    res.json(data);
+  } catch (error) {
+    console.error('Error fetching APOD:', error);
+    res.status(500).json({ error: 'Failed to fetch APOD data' });
+  }
 });
 
 app.get('/api/today', async (req, res) => {
-  const response = await fetch(`${apiUrl}&api_key=${apiKey}`);
-  const data = await response.json();
-  res.json(data);
+  try {
+    // Cache for 1 hour since this is daily content that updates once per day
+    res.set({
+      'Cache-Control': 'public, max-age=3600', // 1 hour
+      'Content-Type': 'application/json'
+    });
+
+    const response = await fetch(`${apiUrl}&api_key=${apiKey}`);
+    
+    if (!response.ok) {
+      throw new Error(`NASA API error: ${response.status}`);
+    }
+    
+    const data = await response.json();
+    res.json(data);
+  } catch (error) {
+    console.error('Error fetching today APOD:', error);
+    res.status(500).json({ error: 'Failed to fetch today APOD data' });
+  }
 });
 
+// Static files
 app.use(
   express.static(browserDistFolder, {
     maxAge: '1y',
@@ -47,6 +81,11 @@ app.use(
  * Handle all other requests by rendering the Angular application.
  */
 app.use('/**', (req, res, next) => {
+  // IMPORTANT: Set headers BEFORE calling angularApp.handle()
+  res.set({
+    'Cache-Control': 'public, max-age=3600', // 1 hour for HTML pages
+  });
+
   angularApp
     .handle(req)
     .then((response) =>
