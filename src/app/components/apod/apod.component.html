@@ -13,7 +13,10 @@
         <div class="text-center pb-12">
             <h1 class="text-4xl font-bold pb-2">Today's picture</h1>
             <p class="text-center text-2xl pb-4">{{ apod.title }}</p>
-            <img [src]="apod.url" [alt]="apod.title" class="apod-image" />
+            <div class="bg-black my-2 relative aspect-[16/9]">
+                <img [src]="apod.url" [alt]="apod.title" class="w-full h-full object-contain" />
+                <a [href]="apod.hdurl" target="_blank" class="text-sm text-white absolute bottom-2 right-2">View original</a>
+            </div>
             <p class="date text-lg font-semibold text-center py-2">{{ apod.date }}</p>
             <p class="explanation text-md text-justify">{{ apod.explanation }}</p>
         </div>

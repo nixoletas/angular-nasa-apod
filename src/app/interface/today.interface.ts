@@ -3,4 +3,5 @@ export interface Today {
   explanation: string;
   title: string;
   url: string;
+  hdurl: string;
 }

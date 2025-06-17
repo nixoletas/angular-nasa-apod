@@ -14,7 +14,8 @@ export class ApodComponent {
     date: '',
     explanation: '',
     title: '',
-    url: ''
+    url: '',
+    hdurl: ''
   };
 
   isLoading = true;
