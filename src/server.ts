@@ -7,7 +7,6 @@ import {
 import express from 'express';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { AngularAppEngine } from '@angular/ssr';
 import { environment } from './environments/environment';
 import dotenv from 'dotenv';
 
@@ -18,7 +17,6 @@ const browserDistFolder = resolve(serverDistFolder, '../browser');
 
 const app = express();
 const angularApp = new AngularNodeAppEngine();
-const angularAppEngine = new AngularAppEngine();
 
 const apiUrl = environment.API_URL;
 const apiKey = process.env['API_KEY'];
@@ -28,7 +26,7 @@ app.get('/api/apod', async (req, res) => {
   try {
     // Set cache headers BEFORE making the API call
     res.set({
-      'Cache-Control': 'public, max-age=10800, s-maxage=10800, must-revalidate', // 3 hours
+      'Cache-Control': 'no-cache', // 3 hours
       'Content-Type': 'application/json'
     });
 
@@ -71,7 +69,7 @@ app.get('/api/today', async (req, res) => {
 // Static files
 app.use(
   express.static(browserDistFolder, {
-    maxAge: '1h',
+    maxAge: '0',
     index: false,
     redirect: false,
   }),
@@ -83,7 +81,7 @@ app.use(
 app.use('/**', (req, res, next) => {
   // IMPORTANT: Set headers BEFORE calling angularApp.handle()
   res.set({
-    'Cache-Control': 'public, max-age=3600, s-maxage=3600, must-revalidate', // 1 hour for HTML pages
+    'Cache-Control': 'no-cache', // 1 hour for HTML pages
   });
 
   angularApp
