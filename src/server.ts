@@ -28,7 +28,7 @@ app.get('/api/apod', async (req, res) => {
   try {
     // Set cache headers BEFORE making the API call
     res.set({
-      'Cache-Control': 'public, max-age=10800', // 3 hours
+      'Cache-Control': 'public, max-age=10800, s-maxage=10800, must-revalidate', // 3 hours
       'Content-Type': 'application/json'
     });
 
@@ -50,7 +50,7 @@ app.get('/api/today', async (req, res) => {
   try {
     // Cache for 1 hour since this is daily content that updates once per day
     res.set({
-      'Cache-Control': 'public, max-age=3600', // 1 hour
+      'Cache-Control': 'public, max-age=3600, s-maxage=3600, must-revalidate', // 1 hour
       'Content-Type': 'application/json'
     });
 
@@ -71,7 +71,7 @@ app.get('/api/today', async (req, res) => {
 // Static files
 app.use(
   express.static(browserDistFolder, {
-    maxAge: '1y',
+    maxAge: '1h',
     index: false,
     redirect: false,
   }),
@@ -83,7 +83,7 @@ app.use(
 app.use('/**', (req, res, next) => {
   // IMPORTANT: Set headers BEFORE calling angularApp.handle()
   res.set({
-    'Cache-Control': 'public, max-age=3600', // 1 hour for HTML pages
+    'Cache-Control': 'public, max-age=3600, s-maxage=3600, must-revalidate', // 1 hour for HTML pages
   });
 
   angularApp
